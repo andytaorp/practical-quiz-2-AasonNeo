@@ -1,11 +1,13 @@
-// src/components/App.js
-import React, { useState } from 'react';
-import AddHabitForm from './AddHabitForm';
-import HabitList from './HabitList';
+import React, { useState } from "react";
+import AddHabitForm from "./AddHabitForm";
+import HabitList from "./HabitList";
 
 function App() {
   const [habits, setHabits] = useState([]);
+
   const handleAddHabit = (habitName) => {
+    if (!habitName.trim()) return; // Prevent adding an empty habit
+
     const newHabit = { id: Date.now(), name: habitName, completed: false };
     setHabits([...habits, newHabit]);
   };
@@ -35,6 +37,7 @@ function App() {
   );
 }
 
-export default App; // Ensure this is the last line of your file
+export default App;
+
 
 
